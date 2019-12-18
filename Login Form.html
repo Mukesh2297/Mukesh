@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Form</title>
+    <script>
+    let unameArr=[];
+    function UsernameCheck()
+    {   
+        let userInput=document.getElementById("ip1").value;
+        let finalresult=document.getElementById("res");
+        let checkmatch=userInput.match(/^([a-zA-Z0-9_\-\.\$]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)
+        if(checkmatch!=null)
+        {   
+            unameArr=String.prototype.toUpperCase.apply(unameArr).split(",");
+            userInput=userInput.toUpperCase();
+            let check=unameArr.indexOf(userInput);   
+            if(check>=0)
+            {
+                finalresult.innerHTML="Email ID Taken";
+                finalresult.style.color="red";
+
+            }
+            else
+            {
+            unameArr.push(userInput);
+            finalresult.innerHTML="Congrats!!Email ID Available"
+            finalresult.style.color="Green";                     
+            }
+            
+        
+        }
+        else{
+            finalresult.innerHTML="Enter Valid Email ID";
+            finalresult.style.color="red";    
+            }
+
+    
+
+    }
+    
+</script>
+</head>
+<body>
+    UserName: <input type="text" id="ip1" onblur="UsernameCheck()"><span id="res"></span><br><br>
+    Password: <input type="text">
+    <br><br>
+    <input type="submit">
+</body>
+</html>
